@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html ng-app="store">
+<head>
+	<meta charset="UTF-8">
+	<title>myAngularPG</title>
+
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+</head>
+<body>
+	<div ng-controller="storeController as store">
+		<div ng-repeat="shop in store.stores">
+			<h2>{{shop.name}}</h2>
+			<h3>Cuisine: {{shop.cuisine}}</h3>
+			<h4>Address: <em>{{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}</em></h4>
+			<hr>
+		</div>
+	</div>
+	<script type="text/javascript" src="./scripts/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="./scripts/libs/angular.js"></script>
+	<script type="text/javascript" src="./scripts/libs/angular-route.min.js"></script>
+	<script type="text/javascript" src="./scripts/app.js"></script>
+</body>
+</html>
