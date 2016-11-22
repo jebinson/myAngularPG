@@ -1,6 +1,8 @@
-angular.module('myAngApp')
-.factory('Api', ['$http',
-function ($http) {
+(function () {
+    
+    angular.module('myAngApp')
+    .factory('Api', ['$http',
+        function ($http) {
     // List all interface / public end points that can be consumed
     var factory = {
         Get: Get,
@@ -11,13 +13,13 @@ function ($http) {
     function Get(apiActionName) {
 
         return $http.get(apiActionName)
-            .then(function (response) {
-                if (response.status == 200) {
-                    return response.data;
-                }
-                alert('Error getting data from Api - ' + response.data.message);
-            },
-            function (error) {
+        .then(function (response) {
+            if (response.status == 200) {
+                return response.data;
+            }
+            alert('Error getting data from Api - ' + response.data.message);
+        },
+        function (error) {
                 //report thr error
                 alert('Error getting data from Api - ' + apiActionName);
             },
@@ -30,13 +32,13 @@ function ($http) {
     function Post(apiActionName, apiData) {
 
         return $http.post(apiActionName, apiData)
-            .then(function (response) {
-                if (response.status == 200) {
-                    return response.data;
-                }
-                alert('Error getting data from Api - ' + response.data.message);
-            },
-            function (error) {
+        .then(function (response) {
+            if (response.status == 200) {
+                return response.data;
+            }
+            alert('Error getting data from Api - ' + response.data.message);
+        },
+        function (error) {
                 //report thr error
                 alert('Error getting data from Api - ' + apiActionName);
             },
@@ -47,3 +49,5 @@ function ($http) {
 
     return factory;
 }]);
+
+})();

@@ -14,7 +14,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -22,7 +22,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
 					</button>
-					<a class="navbar-brand" href="#">myAngularPG</a>
+					<a class="navbar-brand" href="#">myAngular Playground</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-right">
@@ -31,34 +31,27 @@
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Play Ground
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="/#/motorSavings">motorSavings</a></li>
-									<li><a href="/#/hotelSearch">hotelSearch</a></li>
+									<li><a href="/#/motorSavings">Motors</a></li>
+									<li><a href="/#/hotelSearch">Hotels</a></li>
 								</ul>
 							</li>
-							<li><a href="/#/motorSavings">motorSavings</a></li>
-							<li><a href="/#/hotelSearch">hotelSearch</a></li>
+							<li><a href="/#/motorSavings">Motors</a></li>
+							<li><a href="/#/hotelSearch">Hotels</a></li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 	</header>
 
-	<div class="container">
-		<div ng-controller="hotelController as hotel">
-			<div class="row">
-			<div ng-repeat="shop in hotel.stores" class="col-md-6">
-				<h3>{{shop.name}}</h3>
-				<h4>Cuisine: {{shop.cuisine}}</h4>
-				<h4>Address: {{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}.</h4>
-				<button class="btn btn-info">Ratings</button>
-				<hr>
-			</div>
-		</div>
-	</div>
+    <div data-ng-view="">
+
+    </div>
 
 	<script type="text/javascript" src="./scripts/libs/angular.js"></script>
 	<script type="text/javascript" src="./scripts/libs/angular-route.min.js"></script>
 	<script type="text/javascript" src="./scripts/app.js"></script>	
 	<script type="text/javascript" src="./scripts/services/api.js"></script>
+	<script type="text/javascript" src="./scripts/controllers/homeController.js"></script>	
+	<script type="text/javascript" src="./scripts/controllers/hotelController.js"></script>	
 </body>
 </html>
