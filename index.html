@@ -1,23 +1,64 @@
 ﻿<!DOCTYPE html>
-<html ng-app="store">
+<html data-ng-app="myAngApp">
 <head>
-	<meta charset="UTF-8">
-	<title>myAngularPG</title>
+	<title ng-bind="'myAngularPG - ' + title"></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/myAngularPG.css">
+
+	<script type="text/javascript" src="./scripts/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="./scripts/libs/bootstrap.min.js"></script>
 </head>
 <body>
-	<div ng-controller="storeController as store">
-		<div ng-repeat="shop in store.stores">
-			<h2>{{shop.name}}</h2>
-			<h3>Cuisine: {{shop.cuisine}}</h3>
-			<h4>Address: <em>{{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}</em></h4>
-			<hr>
+	<header>
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span> 
+					</button>
+					<a class="navbar-brand" href="#">myAngularPG</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="/#/home">Home</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Play Ground
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/#/motorSavings">motorSavings</a></li>
+									<li><a href="/#/hotelSearch">hotelSearch</a></li>
+								</ul>
+							</li>
+							<li><a href="/#/motorSavings">motorSavings</a></li>
+							<li><a href="/#/hotelSearch">hotelSearch</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+	</header>
+
+	<div class="container">
+		<div ng-controller="hotelController as hotel">
+			<div class="row">
+			<div ng-repeat="shop in hotel.stores" class="col-md-6">
+				<h3>{{shop.name}}</h3>
+				<h4>Cuisine: {{shop.cuisine}}</h4>
+				<h4>Address: {{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}.</h4>
+				<button class="btn btn-info">Ratings</button>
+				<hr>
+			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="./scripts/libs/jquery.min.js"></script>
+
 	<script type="text/javascript" src="./scripts/libs/angular.js"></script>
 	<script type="text/javascript" src="./scripts/libs/angular-route.min.js"></script>
-	<script type="text/javascript" src="./scripts/app.js"></script>
+	<script type="text/javascript" src="./scripts/app.js"></script>	
+	<script type="text/javascript" src="./scripts/services/api.js"></script>
 </body>
 </html>
