@@ -1,10 +1,19 @@
 <div class="container">
-	<div class="row">
-	<div ng-repeat="shop in vm.data | limitTo:20" class="col-md-6">
-			<h3>{{shop.name}}</h3>
-			<h4>Cuisine: {{shop.cuisine}}</h4>
-			<h4>Address: {{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}.</h4>
-			<hr>
+	<div class="row">		
+		<h1>Hotel Search</h1>
+		<div>
+			<input type="text" class="form-control" ng-model="vm.search"/>
+		</div>
+		<div ng-show="vm.search">
+			<div ng-repeat="shop in vm.filtered = (vm.data | filter:vm.search) | limitTo:vm.totalDisplayed">
+				<h3>{{shop.name}}</h3>
+				<h4>Address: {{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}.</h4>
+				<p>Cuisine: {{shop.cuisine}}</p>			
+				<hr>
+			</div>
+			<div class="pull-right" ng-hide="vm.totalDisplayed >= vm.filtered.length">
+				<button class="btn btn-default" ng-click="vm.loadMore()" >Load more</button>
+			</div>
 		</div>
 	</div>
 </div>

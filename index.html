@@ -6,9 +6,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/myAngularPG.css">
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/myAngularPG.css">
+	
 	<script type="text/javascript" src="./scripts/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="./scripts/libs/bootstrap.min.js"></script>
 </head>
@@ -22,7 +25,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
 					</button>
-					<a class="navbar-brand" href="#">myAngular Playground</a>
+					<a class="navbar-brand" href="/#/home">myAngular Playground</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-right">
@@ -43,9 +46,14 @@
 			</nav>
 	</header>
 
-    <div data-ng-view="">
+    <div data-ng-view=""></div>
 
+    <footer class="footer">
+    <div class="container">
+    	<p class="text-muted">
+    	<i class="fa fa-copyright" aria-hidden="true"> </i><strong>2016</strong> Jebinson Samarasam</p>
     </div>
+    </footer>
 
 	<script type="text/javascript" src="./scripts/libs/angular.js"></script>
 	<script type="text/javascript" src="./scripts/libs/angular-route.min.js"></script>
