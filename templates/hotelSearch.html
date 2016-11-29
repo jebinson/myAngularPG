@@ -1,17 +1,32 @@
 <div class="container">
-	<div class="row">		
-		<h1>Hotel Search</h1>
-		<div>
-			<input type="text" class="form-control" ng-model="vm.search"/>
+	<div class="row">
+		<div class="center-block text-center normalpad">
+			<h1>Find the best restaurants and cafés</h1>
+			<div class="input-group col-md-12">
+			<input class="form-control input-lg" type="text" ng-model="vm.search" placeholder="Search by location, cuisine or restaurant" />
+			</div>
 		</div>
-		<div ng-show="vm.search">
-			<div ng-repeat="shop in vm.filtered = (vm.data | filter:vm.search) | limitTo:vm.totalDisplayed">
+		<div class="row" ng-hide="vm.search">
+			<div class="col-md-10">
+				<h3>Cuisines:</h3>
+				<ul ng-repeat="cuisine in vm.cuisines" class="list-unstyled">
+					<li class="colmnctrl">{{cuisine}}</li>
+				</ul>
+			</div>
+			<div class="col-md-2">
+				<h3>Borough:</h3>
+				<ul ng-repeat="location in vm.locations" class="list-unstyled">
+					<li>{{location}}</li>
+				</ul>
+			</div>
+		</div>
+		<div ng-show="vm.search" class="list-group normalpad">
+			<div ng-repeat="shop in vm.filtered = (vm.data | filter:vm.search) | limitTo:vm.totalDisplayed" class="list-group-item">
 				<h3>{{shop.name}}</h3>
 				<h4>Address: {{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}.</h4>
-				<p>Cuisine: {{shop.cuisine}}</p>			
-				<hr>
+				<p>Cuisine: {{shop.cuisine}}</p>
 			</div>
-			<div class="pull-right" ng-hide="vm.totalDisplayed >= vm.filtered.length">
+			<div class="pull-right normalpad" ng-hide="vm.totalDisplayed >= vm.filtered.length">
 				<button class="btn btn-default" ng-click="vm.loadMore()" >Load more</button>
 			</div>
 		</div>

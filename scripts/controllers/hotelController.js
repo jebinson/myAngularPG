@@ -1,7 +1,7 @@
 (function () {
 
 	angular.module('myAngApp')
-	.controller('hotelController', ['$scope', "Api",function($scope, Api){
+	.controller('hotelController', ['$scope', 'Api',function($scope, Api){
 
 		var vm = this;
 		vm.title = "Hotel Search";
@@ -11,6 +11,12 @@
 
 		Api.Get(url).then(function(response){
 			vm.data = response;
+			vm.cuisines = [];
+			vm.locations = [];
+			for (var i = response.length - 1; i >= 0; i--) {
+				if (!vm.cuisines.includes(response[i].cuisine)) {vm.cuisines.push(response[i].cuisine)}
+				if (!vm.locations.includes(response[i].borough)) {vm.locations.push(response[i].borough)}
+			}
 		})
 
 		vm.totalDisplayed = 5;
