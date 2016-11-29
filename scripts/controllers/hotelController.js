@@ -4,7 +4,7 @@
 	.controller('hotelController', ['$scope', 'Api',function($scope, Api){
 
 		var vm = this;
-		vm.title = "Hotel Search";
+		vm.title = "Café Search";
 		vm.data = [];
 
 		var url = 'https://raw.githubusercontent.com/jebinson/myAngularPG/master/data/hotelData.json';

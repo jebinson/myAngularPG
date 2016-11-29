@@ -5,6 +5,9 @@ html {
 }
 body {
   margin-bottom: 50px;
+  background: url("../images/blurred-background.jpg");
+  background-size:cover;
+  color: #000;
 }
 .footer {
   position: absolute;
@@ -19,7 +22,6 @@ body > .container {
 }
 .container .text-muted {
   margin: 15px 0;
-  color:white;
 }
 
 .footer > .container {
@@ -42,3 +44,14 @@ ul, li { margin: 0; padding: 0; }
   padding: 10px;
 }
 
+.transbox-parent{
+  padding: 25px;
+  display: flex;
+}
+
+div.transbox {
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.3);
+    filter: alpha(opacity=30); /* For IE8 and earlier */
+    align-items: stretch;
+}

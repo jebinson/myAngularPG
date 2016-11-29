@@ -3,32 +3,40 @@
 		<div class="center-block text-center normalpad">
 			<h1>Find the best restaurants and cafés</h1>
 			<div class="input-group col-md-12">
-			<input class="form-control input-lg" type="text" ng-model="vm.search" placeholder="Search by location, cuisine or restaurant" />
+				<input class="form-control input-lg" type="text" ng-model="vm.search" placeholder="Search by location, cuisine or restaurant" />
 			</div>
 		</div>
-		<div class="row" ng-hide="vm.search">
-			<div class="col-md-10">
+		<div class="row transbox-parent" ng-hide="vm.search">
+			<div class="col-md-10 transbox">
 				<h3>Cuisines:</h3>
 				<ul ng-repeat="cuisine in vm.cuisines" class="list-unstyled">
 					<li class="colmnctrl">{{cuisine}}</li>
 				</ul>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 transbox">
 				<h3>Borough:</h3>
 				<ul ng-repeat="location in vm.locations" class="list-unstyled">
 					<li>{{location}}</li>
 				</ul>
 			</div>
 		</div>
-		<div ng-show="vm.search" class="list-group normalpad">
-			<div ng-repeat="shop in vm.filtered = (vm.data | filter:vm.search) | limitTo:vm.totalDisplayed" class="list-group-item">
-				<h3>{{shop.name}}</h3>
-				<h4>Address: {{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}.</h4>
+		<div ng-show="vm.search && vm.filtered.length" class="list-group normalpad">
+			<h3>Search results:</h3>
+			<div ng-repeat="shop in vm.filtered = (vm.data | filter:vm.search) | limitTo:vm.totalDisplayed" class="list-group-item transbox">
+				<h4>{{shop.name}}</h4>
+				<h5>Address: {{shop.address.building}}, {{shop.address.street}}, {{shop.borough}} {{shop.address.zipcode}}.</h5>
 				<p>Cuisine: {{shop.cuisine}}</p>
 			</div>
-			<div class="pull-right normalpad" ng-hide="vm.totalDisplayed >= vm.filtered.length">
-				<button class="btn btn-default" ng-click="vm.loadMore()" >Load more</button>
+			<div class="normalpad" ng-hide="vm.filtered.length < 5">
+				<p>Displaying 1-{{vm.totalDisplayed}} of {{vm.filtered.length}} results.</p>
+				<br>
 			</div>
+			<div class="pull-right normalpad" ng-hide="vm.totalDisplayed >= vm.filtered.length">
+				<button class="btn btn-primary btn-lg" ng-click="vm.loadMore()" >Load more</button>
+			</div>
+		</div>
+		<div ng-show="vm.search && !vm.filtered.length">
+			<h3>Sorry, no cafés matching your query, please try again.</h3>
 		</div>
 	</div>
 </div>
