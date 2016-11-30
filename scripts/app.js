@@ -28,6 +28,12 @@
 			controllerAs: 'vm',
 			title: 'Motor savings'
 		})
+		.when('/kendoPG', {
+			controller : 'kendoCtrl',
+			templateUrl: viewBase + 'kendoPG.html',
+			controllerAs: 'vm',
+			title: 'Kendo playground'
+		})
 		.otherwise({redirectTo: '/'});
 	}]);
 

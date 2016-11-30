@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en" data-ng-app="myAngApp">
 <head>
-	<base href="/myAngularPG/">
 	<title ng-bind="'myAngularPG - ' + title"></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta charset="utf-8">
@@ -10,11 +9,16 @@
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/kendo.common.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/kendo.default.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/kendo.default.mobile.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/myAngularPG.css">
 	
 	<script type="text/javascript" src="./scripts/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="./scripts/libs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./scripts/libs/angular.js"></script>
+	<script type="text/javascript" src="./scripts/libs/angular-route.min.js"></script>
+	<script type="text/javascript" src="./scripts/libs/kendo.all.min.js"></script>	
 </head>
 <body>
 	<header>
@@ -37,10 +41,12 @@
 								<ul class="dropdown-menu">
 									<li><a href="/#/motorSavings">Motors</a></li>
 									<li><a href="/#/hotelSearch">Cafés</a></li>
+									<li><a href="/#/kendoPG"></a>Kendo UI</li>
 								</ul>
 							</li>
 							<li><a href="/#/motorSavings">Motors</a></li>
 							<li><a href="/#/hotelSearch">Cafés</a></li>
+							<li><a href="/#/kendoPG"></a>Kendo UI</li>
 						</ul>
 					</div>
 				</div>
@@ -56,8 +62,6 @@
     </div>
     </footer>
 
-	<script type="text/javascript" src="./scripts/libs/angular.js"></script>
-	<script type="text/javascript" src="./scripts/libs/angular-route.min.js"></script>
 	<script type="text/javascript" src="./scripts/app.js"></script>	
 	<script type="text/javascript" src="./scripts/services/api.js"></script>
 	<script type="text/javascript" src="./scripts/controllers/homeController.js"></script>	
