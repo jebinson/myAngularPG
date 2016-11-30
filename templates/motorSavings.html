@@ -1,0 +1,106 @@
+<div class="container transbox">
+
+	<!--application description and image-->
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-12 normalpad">
+			<h3>Motor Cost Savings Calculator</h3>
+			<p>If you are considering a motor upgrade, this simple calculator can help you determine your potential cost savings. Motors are one of the few devices whose first year operating costs can be higher than their initial purchase price. This maximizes the importance of motor operating efficiency even a slight improvement can pay for itself by returning dollars to the bottom line quickly and in the years to follow.</p>
+			<p>You can calculate operating cost, or run a quick comparison between two motors.</p>
+			<p>To begin, enter your motor information in the Detailed Cost Comparison Calculator fields and click the Calculate button. The Annual Cost Savings will displayed.</p>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-12 normalpad">
+			<img src="images/motors.jpg" class="img-responsive img-thumbnail" height="250">
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<form id="motors" name="motorForm" ng-submit="vm.calcSavings()">
+			<div class="col-md-6 col-sm-6 col-xs-12 normalpad">
+				<div class="row">
+					<h3 class="col-xs-12">Motor 1</h3>
+					<div class="col-xs-4">
+						<label>IE Class:</label>
+						<select class="form-control" ng-model="vm.calcData.ie1" ng-options="o as o for o in vm.motorMaster.ieRating">	
+						</select>
+					</div>
+					<div class="col-xs-4">
+						<label>Rating:</label>
+						<select class="form-control" ng-model="vm.calcData.kw1" ng-options="o as o for o in vm.motorMaster.rating">		
+						</select>
+					</div>
+					<div class="col-xs-4">
+						<label>Rating:</label>
+						<select class="form-control" ng-model="vm.calcData.pol1" ng-options="o as o for o in vm.motorMaster.pole">	
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 normalpad">
+				<div class="row">
+					<h3 class="col-xs-12">Motor 1</h3>
+					<div class="col-xs-4">
+						<label>IE Class:</label>
+						<select class="form-control" ng-model="vm.calcData.ie2" ng-options="o as o for o in vm.motorMaster.ieRating"></select>
+					</div>
+					<div class="col-xs-4">
+						<label>Rating:</label>
+						<select class="form-control" ng-model="vm.calcData.kw2" ng-options="o as o for o in vm.motorMaster.rating"></select>
+					</div>
+					<div class="col-xs-4">
+						<label>Rating:</label>
+						<select class="form-control" ng-model="vm.calcData.pol2" ng-options="o as o for o in vm.motorMaster.pole"></select>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4 normalpad">
+				<label>Elec. Cost ($/kWh)</label> <input class="form-control" name="elecCost" ng-model="vm.calcData.elecCost" type="number" step="any" />
+			</div>
+			<div class="col-xs-12 normalpad">
+				<input class="btn btn-primary pull-right" type="submit" value="Calculate" />
+			</div>
+		</form>		
+	</div>
+
+	<!--Annual cost savings -->
+	<div class="normalpad" ng-show = "vm.calcData.calcDisp">
+		<h4>Annual Cost Savings (based on daily usage)</h4>
+		<table class="table">
+			<tr>
+				<th>Motor Details</th>
+				<th>days/week</th>
+				<th ng-repeat="hrs in [2, 4, 8, 12, 24]">{{hrs}} hrs/day</th>
+			</tr>
+			<tr ng-repeat="days in [5, 7]">
+				<td>{{vm.calcData.kw1}}kW @ {{vm.calcData.eff1}}% eff <strong>vs</strong> {{vm.calcData.kw2}}kW @ {{vm.calcData.eff2}}% eff</td>
+				<td>{{days}}</td>
+				<td ng-repeat="hrs in [2, 4, 8, 12, 24]">{{vm.calcData.annualSaving * hrs * days | number:0}}</td>
+			</tr>
+		</table>
+		<div class="normalpad" ng-hide="vm.calcData.tableDisp">
+			<button ng-click="vm.calcData.tableDisp = true" class="btn btn-primary pull-right">Refer Efficiency table</button>
+		</div>
+		<div class="normalpad" ng-show="vm.calcData.tableDisp">
+			<button ng-click="vm.calcData.tableDisp = false" class="btn btn-primary pull-right">Hide Efficiency table</button>
+		</div>
+	</div>
+
+	<!--Efficiency table loaded from JSON-->
+	<div class="normalpad" ng-show="vm.calcData.tableDisp">
+		<h4>Minimum 50 Hz efficiency values defined in IEC/EN 60034-30-1:2014</h4>
+		<table class="table">
+			<tr>
+				<th rowspan="2">Output kW</th>
+				<th colspan="4" ng-repeat="ie in vm.motorMaster.ieRating">{{ie}}</th>
+			</tr>
+			<tr>
+				<th ng-repeat="pole in vm.motorMaster.pole">{{pole}}</th>
+				<th ng-repeat="pole in vm.motorMaster.pole">{{pole}}</th>
+				<th ng-repeat="pole in vm.motorMaster.pole">{{pole}}</th>
+				<th ng-repeat="pole in vm.motorMaster.pole">{{pole}}</th>
+			</tr>
+			<tr ng-repeat="kw in vm.motorMaster.rating track by $index">
+				<td>{{kw}}</td>
+				<td ng-repeat="ef in vm.effArray[$index] track by $index">{{ef}}</td>
+			</tr>
+		</table>
+	</div>

@@ -14,31 +14,31 @@
 			controller : 'homeController',
 			templateUrl: viewBase + 'home.html',
 			controllerAs: 'vm',
-			title: 'My Angular Play Ground'
+			title: 'Home'
 		})
 		.when('/hotelSearch', {
 			controller : 'hotelController',
 			templateUrl: viewBase + 'hotelSearch.html',
 			controllerAs: 'vm',
-			title: 'Hotel Search'
+			title: 'Café search'
 		})
 		.when('/motorSavings', {
 			controller : 'motorSavings',
 			templateUrl: viewBase + 'motorSavings.html',
 			controllerAs: 'vm',
-			title: 'Motor Savings Calculator'
+			title: 'Motor savings'
 		})
 		.otherwise({redirectTo: '/'});
 	}]);
 
-	app.run(['$location', '$rootScope', function ($location, $rootScope) {
-		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+    app.run(['$location', '$rootScope', function ($location, $rootScope) {
+        $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 
-			if (current.hasOwnProperty('$$route')) {
+            if (current.hasOwnProperty('$$route')) {
 
-				$rootScope.title = current.$$route.title;
-			}
-		});
-	}]);
+                $rootScope.title = current.$$route.title;
+            }
+        });
+    }]);
 
 })();

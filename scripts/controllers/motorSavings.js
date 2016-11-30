@@ -42,7 +42,7 @@
 				for (i in vm.motorMaster.rating) {
 					vm.effArray[i] = [];
 					for (j in vm.motorMaster.ieRating) {
-						for (k vm.motorMaster.pole) {
+						for (k in vm.motorMaster.pole) {
 							vm.effArray[i].push(response[vm.motorMaster.ieRating[j]][vm.motorMaster.rating[i]][vm.motorMaster.pole[k]]);
 						}
 					}
@@ -50,9 +50,9 @@
 
 			})
 
-			} else {
-				alert('Fill in motor deatils.')
-			}
+		} else {
+			alert('Fill in motor deatils.')
+		}
 	};
 
 

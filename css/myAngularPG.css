@@ -29,10 +29,6 @@ body > .container {
   padding-left: 15px;
 }
 
-.nav{
-  color: white !important;
-}
-
 ul, li { margin: 0; padding: 0; }
 
 .colmnctrl {
@@ -49,9 +45,13 @@ ul, li { margin: 0; padding: 0; }
   display: flex;
 }
 
+div.transbox-child{
+      align-items: stretch;
+}
+
 div.transbox {
     background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
     background: rgba(204, 204, 204, 0.3);
     filter: alpha(opacity=30); /* For IE8 and earlier */
-    align-items: stretch;
 }
+

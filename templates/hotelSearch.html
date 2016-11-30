@@ -7,13 +7,13 @@
 			</div>
 		</div>
 		<div class="row transbox-parent" ng-hide="vm.search">
-			<div class="col-md-10 transbox">
+			<div class="col-md-10 transbox-child transbox">
 				<h3>Cuisines:</h3>
 				<ul ng-repeat="cuisine in vm.cuisines" class="list-unstyled">
 					<li class="colmnctrl">{{cuisine}}</li>
 				</ul>
 			</div>
-			<div class="col-md-2 transbox">
+			<div class="col-md-2 transbox-child transbox">
 				<h3>Borough:</h3>
 				<ul ng-repeat="location in vm.locations" class="list-unstyled">
 					<li>{{location}}</li>
