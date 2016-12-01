@@ -1,9 +1,10 @@
 (function () {
 
 
-	var app = angular.module('myAngApp', ['ngRoute']);
+	var app = angular.module('myAngApp', ['ngRoute', "kendo.directives"]);
 
-	app.config(['$routeProvider',function($routeProvider) {
+	app.config(['$routeProvider','$locationProvider',
+		function($routeProvider, $locationProvider) {
 
 		var viewBase = '/templates/';
 
@@ -35,6 +36,8 @@
 			title: 'Kendo playground'
 		})
 		.otherwise({redirectTo: '/'});
+
+		$locationProvider.html5Mode(true);
 	}]);
 
     app.run(['$location', '$rootScope', function ($location, $rootScope) {
