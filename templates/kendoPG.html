@@ -1,1 +1,9 @@
-﻿<label>Kendo date picker: <input kendo-date-picker /></label>
+﻿<div class="container">
+	<label>Kendo date picker: <input kendo-date-picker ng-model="vm.dataEx.date"/></label>
+	<h4 ng-show="vm.dataEx.date">Selected date is {{vm.dataEx.date}}.</h4>
+    <div>
+        <h4>Select Country /e.g. Armenia/</h4>
+        <input kendo-auto-complete ng-model="country" k-data-source="vm.countryNames" style="width: 30%;" />
+        <p>Your selection: {{ country }}</p>
+    </div>
+</div>

@@ -3,8 +3,7 @@
 
 	var app = angular.module('myAngApp', ['ngRoute', "kendo.directives"]);
 
-	app.config(['$routeProvider','$locationProvider',
-		function($routeProvider, $locationProvider) {
+	app.config(['$routeProvider', function($routeProvider) {
 
 		var viewBase = '/templates/';
 
@@ -37,7 +36,7 @@
 		})
 		.otherwise({redirectTo: '/'});
 
-		$locationProvider.html5Mode(true);
+		// $locationProvider.html5Mode(true);
 	}]);
 
     app.run(['$location', '$rootScope', function ($location, $rootScope) {
